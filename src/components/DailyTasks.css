@@ -1,0 +1,51 @@
+.daily-tasks {
+  --daily-task-width: 300px;
+  --daily-task-height: 400px;
+  width: var(--daily-task-width);
+  /* height: var(--daily-task-height); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  top: 2%;
+  left: 1.1%;
+  border-radius: 1em;
+  padding: 1em;
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.119);
+
+}
+
+.daily-tasks-blur {
+  border-radius: 1em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--daily-task-width);
+  height: 100%;
+  filter: blur(4px);
+  /* background-color: rgba(255, 255, 255, 0.059); */
+  background-color: rgba(255, 255, 255, 0.119);
+  z-index: -1;
+}
+
+.daily-tasks-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 2em;
+  align-items: center;
+}
+
+.task-form {
+  margin-bottom: 1.1em;
+}
+
+.task-input {
+  background-color: transparent;
+  border:none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  color: #fff;
+  font-size: 1.17em;
+}
