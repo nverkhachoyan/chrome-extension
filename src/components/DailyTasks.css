@@ -1,7 +1,7 @@
 .daily-tasks {
-  --daily-task-width: 320px;
+  --daily-task-width: 400px;
   --daily-task-height: 400px;
-  width: var(--daily-task-width);
+  max-width: var(--daily-task-width);
   /* height: var(--daily-task-height); */
   display: flex;
   flex-direction: column;
@@ -9,11 +9,12 @@
   align-items: center;
   position:absolute;
   top: 2%;
-  left: 1.1%;
+  right: 1.1%;
   border-radius: 1em;
   padding: 1em;
   border: 1px solid #fff;
-  background-color: rgba(255, 255, 255, 0.119);
+  /* background-color: rgba(255, 255, 255, 0.119); */
+  background-color: rgba(30, 30, 30, 0.696);
 }
 
 .daily-tasks-container {
@@ -40,7 +41,7 @@
 .task {
   width: 100%;
   display: flex;
-  position: relative;
+  /* position: relative; */
   gap: 1em;
 }
 
@@ -63,7 +64,7 @@
   cursor: pointer;
   transition: 0.2s ease-in-out;
   position: absolute;
-  right: -40%;
+  right: 0%;
 }
 
 .task-remove:hover {

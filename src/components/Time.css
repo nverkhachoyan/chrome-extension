@@ -1,0 +1,13 @@
+.time {
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(1px 1px 3px #282828);
+
+}

@@ -7,7 +7,7 @@
   --global-animation-duration: .3s;
 }
 
-html {
+html, body {
   font-family: 'Comfortaa', cursive;
 }
 
@@ -16,6 +16,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-size: 100%;
 }
 
 .app {
@@ -24,28 +25,6 @@ body {
   background-size: cover;
   color: #fff;
 }
-
-.date {
-  font-size: 2rem;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: white;
-  font-weight: 700;
-}
-
-.time {
-  font-size: 3rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  transform: translate(-50%, -50%);
-}
-
 
 .settings-icon { 
   content: ' ';

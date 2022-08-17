@@ -1,4 +1,5 @@
- import {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
+import './Date.css'
 
 function DateComponent({isShown}) {
  const [date, setDate] = useState(new Date())

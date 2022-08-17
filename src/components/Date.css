@@ -1,0 +1,9 @@
+.date {
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-weight: 700;
+  filter: drop-shadow(1px 1px 3px #282828);
+}
