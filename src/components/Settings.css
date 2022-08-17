@@ -1,0 +1,41 @@
+.settings {
+  --daily-task-width: 300px;
+  --daily-task-height: 400px;
+  width: var(--daily-task-width);
+  /* height: var(--daily-task-height); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1em;
+  padding: 2em;
+  border: 1px solid #fff;
+  /* background-color: rgba(255, 255, 255, 0.119); */
+  background-color: rgba(0, 0, 0, 0.785);
+
+  width: 500px;
+  transition: var(--global-animation-duration) ease-in-out;
+  opacity: 0;
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 2em;
+  align-items: start;
+
+}
+
+.settings-headline {
+  margin-bottom: 1.1em;
+}
+
+.setting {
+  padding: .3em 0;
+}
+
+

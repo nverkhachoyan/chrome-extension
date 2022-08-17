@@ -1,59 +1,44 @@
-import {useState, useRef, useEffect} from 'react'
+import useDailyTasksHook from "../hooks/DailyTasksHook"
+import removeIcon from '../assets/icons/remove.svg'
 import './DailyTasks.css'
 
-function DailyTasks() {
-  const [tasksArray, setTasksArray] = useState([])
-  const [newTask, setNewTask] = useState('')
-  const inputFieldRef = useRef(null)
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    console.log(newTask)
-    const existing = localStorage.getItem('tasks')
-
-    if(existing) {
-      const parsedData = JSON.parse(existing)
-      parsedData.unshift(newTask)
-      setTasksArray(parsedData)
-      localStorage.setItem('tasks', JSON.stringify(parsedData))
-    } else {
-      localStorage.setItem('tasks', JSON.stringify([newTask]))
-    }
-  }
-
-  useEffect(() => {
-    if(localStorage.tasks) {
-      setTasksArray(() => JSON.parse(localStorage.tasks))
-    } else {
-      localStorage.setItem('tasks', JSON.stringify(['Take meds', 'Do the dishes', 'Study for 3 hours', 'Read a book!', 'Exercise!']))
-    }
-  }, [])
-
-  useEffect(() => {
-    const listenForClick = document.addEventListener('click', inputFieldRef.current.focus())
-    return () => {
-      document.removeEventListener('click', listenForClick)
-    }
-  }, [])
-
+function DailyTasks({isShown}) {
+  const {tasksArray, newTask, inputFieldRef, handleSubmit, updateNewTask, removeTask,  handleTaskChecked} = useDailyTasksHook()
 
   return (
-    <div onClick={() => inputFieldRef.current.focus()} className="daily-tasks">
+    <div 
+    onClick={() => inputFieldRef.current.focus()} 
+    className="daily-tasks"
+    style={{
+      transition: '0.3s ease-in-out',
+      opacity: isShown ? 1 : 0}}
+    >
+      <h2>Daily Tasks</h2>
       <form className='task-form' onSubmit={(e) => handleSubmit(e)}>
-          <input 
-            className='task-input' 
-            type="text" 
-            ref={inputFieldRef}
-            value={newTask} 
-            onChange={e => setNewTask(e.target.value)}
-            />
-        </form>
+        <input 
+          className='task-input' 
+          type="text" 
+          ref={inputFieldRef}
+          value={newTask.title} 
+          onChange={e => updateNewTask(e)}
+        />
+      </form>
       <div className="daily-tasks-container">
         {tasksArray.map((task, index) => (
-        <h3 className='task' key={index}>{task}</h3>
+          <div 
+          key={index}
+          className="task">
+            <h3 
+            key={index}
+            className={`task-title ${task.isChecked ? 'taskChecked' : ''}`}
+            onClick={() => handleTaskChecked(index)}
+            >
+              {task.title}
+            </h3>
+            {task.isChecked && <div className="task-remove" onClick={() => removeTask(index)}></div>}
+          </div>
         ))}
       </div>
-      <div className="daily-tasks-blur"></div>
     </div>
   )
 }

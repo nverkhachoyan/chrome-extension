@@ -1,5 +1,5 @@
 .daily-tasks {
-  --daily-task-width: 300px;
+  --daily-task-width: 320px;
   --daily-task-height: 400px;
   width: var(--daily-task-width);
   /* height: var(--daily-task-height); */
@@ -14,20 +14,6 @@
   padding: 1em;
   border: 1px solid #fff;
   background-color: rgba(255, 255, 255, 0.119);
-
-}
-
-.daily-tasks-blur {
-  border-radius: 1em;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--daily-task-width);
-  height: 100%;
-  filter: blur(4px);
-  /* background-color: rgba(255, 255, 255, 0.059); */
-  background-color: rgba(255, 255, 255, 0.119);
-  z-index: -1;
 }
 
 .daily-tasks-container {
@@ -38,6 +24,7 @@
 }
 
 .task-form {
+  margin-top: .3em;
   margin-bottom: 1.1em;
 }
 
@@ -48,4 +35,46 @@
   outline: none;
   color: #fff;
   font-size: 1.17em;
+}
+
+.task {
+  width: 100%;
+  display: flex;
+  position: relative;
+  gap: 1em;
+}
+
+.task-title {
+  width: 100%;
+  text-align: center;
+}
+
+.task-remove {
+  opacity: 0;
+  background-color: #fff;
+  -webkit-mask-image: url('../assets//icons/remove.svg');
+  mask-image: url('../assets//icons/remove.svg');
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position: absolute;
+  right: -40%;
+}
+
+.task-remove:hover {
+  opacity: 1;
+}
+
+.task-title {
+  cursor: pointer;
+}
+
+.taskChecked {
+  text-decoration: line-through;
+
 }
