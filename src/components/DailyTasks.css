@@ -10,11 +10,13 @@
   position:absolute;
   top: 2%;
   right: 1.1%;
-  border-radius: 1em;
+  border-radius: .1em;
   padding: 1em;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   /* background-color: rgba(255, 255, 255, 0.119); */
-  background-color: rgba(30, 30, 30, 0.696);
+  background-color: rgba(30, 30, 30, 0.733);
+  background-color: #000000df;
+  box-shadow: 1px 1px 15px #000;
 }
 
 .daily-tasks-container {
@@ -32,7 +34,7 @@
 .task-input {
   background-color: transparent;
   border:none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgb(181, 181, 181);
   outline: none;
   color: #fff;
   font-size: 1.17em;
@@ -78,4 +80,8 @@
 .taskChecked {
   text-decoration: line-through;
 
+}
+
+.no-tasks {
+  color: rgb(183, 183, 183);
 }

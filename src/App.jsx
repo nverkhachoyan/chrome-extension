@@ -1,32 +1,52 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import DailyTasks from "./components/DailyTasks";
 import defaultBackground from './assets/default-background2.jpeg'
 import Time from "./components/Time";
 import DateComponent from './components/DateComponent'
 import Settings from "./components/Settings";
+import Weather from "./components/Weather"
+import useUnsplashAPI from './wallpaperAPI'
 import './App.css'
 
-function App() {
+function App({SettingsContext}) {
+  const {wallpaperData, setWallpaperData} = useUnsplashAPI(null)
   const [onShowSettings, setOnShowSettings] = useState(false)
+  const {settings} = useContext(SettingsContext)
+  const {
+    enableDailyTasks, 
+    enableTime, 
+    enableDate, 
+    enableWeather,
+    ...rest} = settings
 
-  // useEffect(() => {
-  //   fetch("https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=e74051f5395c3def84625543fee11546")
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-
-  // }, []);
 
   return (
-    <div className="app" id="app" style={{ backgroundImage: `url(${defaultBackground})`}}>
+      <div 
+      className="app" 
+      id="app" 
+      style={{ backgroundImage: `url(${wallpaperData ? wallpaperData.urls.regular : defaultBackground})`}}
+      >
 
-        <DateComponent isShown={!onShowSettings}  />
-        <Time isShown={!onShowSettings}   />
-        <DailyTasks isShown={!onShowSettings} />
+        {enableDate && <DateComponent isShown={!onShowSettings}  />}
+        {enableWeather && <Weather isShown={!onShowSettings} />}
+
+        {enableTime && <Time isShown={!onShowSettings}   />}
+        {enableDailyTasks && <DailyTasks isShown={!onShowSettings} />}
+
+
+
+
+        <div className="unsplash_credits">
+          Photo by 
+          <span> John Doe </span>
+          on <a href="www.unsplash.com">Unsplash</a>
+        </div>
+
         <Settings isShown={onShowSettings} />
-
-      
-       <div className="settings-icon" onClick={() => setOnShowSettings(!onShowSettings)}></div>
-    </div>
+        <div className="settings-icon" onClick={() => setOnShowSettings(!onShowSettings)}></div>
+      </div>
+ 
+    
   )
 }
 

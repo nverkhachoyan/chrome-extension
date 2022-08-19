@@ -11,12 +11,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 1em;
+  border-radius: .3em;
   padding: 2em;
-  border: 1px solid #fff;
   /* background-color: rgba(255, 255, 255, 0.119); */
-  background-color: rgba(0, 0, 0, 0.785);
-
+  background-color: rgba(0, 0, 0, 0.843);
+  box-shadow: 1px 1px 15px #000;
+  
   width: 500px;
   transition: var(--global-animation-duration) ease-in-out;
   opacity: 0;
@@ -32,10 +32,19 @@
 
 .settings-headline {
   margin-bottom: 1.1em;
+  padding: .3em 0;
+  border-bottom: .04em solid #fff;
 }
 
 .setting {
-  padding: .3em 0;
+  width: 100%;
+  line-height: 2.2em;
+  display: flex;
+  gap: 2em;
 }
 
-
+.setting-button {
+  cursor: pointer;
+ 
+  margin-left: auto;
+}

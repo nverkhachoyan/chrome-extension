@@ -1,9 +1,29 @@
+import {useContext} from 'react'
+import { SettingsContext } from '../contexts/SettingsContext'
 import useDailyTasksHook from "../hooks/DailyTasksHook"
 import removeIcon from '../assets/icons/remove.svg'
 import './DailyTasks.css'
 
 function DailyTasks({isShown}) {
+  const {settings} = useContext(SettingsContext)
   const {tasksArray, newTask, inputFieldRef, handleSubmit, updateNewTask, removeTask,  handleTaskChecked} = useDailyTasksHook()
+  
+  function getTasks() {
+    return tasksArray.map((task, index) => (
+      <div 
+      key={index}
+      className="task">
+        <h3 
+        key={index}
+        className={`task-title ${task.isChecked ? 'taskChecked' : ''}`}
+        onClick={() => handleTaskChecked(index)}
+        >
+          {task.title}
+        </h3>
+        {task.isChecked && <div className="task-remove" onClick={() => removeTask(index)}></div>}
+      </div>
+    ))
+  }
 
   return (
     <div 
@@ -24,20 +44,8 @@ function DailyTasks({isShown}) {
         />
       </form>
       <div className="daily-tasks-container">
-        {tasksArray.map((task, index) => (
-          <div 
-          key={index}
-          className="task">
-            <h3 
-            key={index}
-            className={`task-title ${task.isChecked ? 'taskChecked' : ''}`}
-            onClick={() => handleTaskChecked(index)}
-            >
-              {task.title}
-            </h3>
-            {task.isChecked && <div className="task-remove" onClick={() => removeTask(index)}></div>}
-          </div>
-        ))}
+        {tasksArray.length > 0 ? getTasks() : <span className='no-tasks'>No tasks to show</span>}
+        
       </div>
     </div>
   )

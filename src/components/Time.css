@@ -1,5 +1,5 @@
 .time {
-  font-size: 3rem;
+  font-size: 4rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8,6 +8,5 @@
   align-items: center;
   text-align: center;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(1px 1px 3px #282828);
-
+  filter: drop-shadow(1px 1px 5px #282828);
 }

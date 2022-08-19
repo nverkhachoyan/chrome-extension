@@ -50,3 +50,21 @@ body {
   transform: rotate(45deg);
   opacity: 1;
 }
+
+.unsplash_credits {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  font-size: .6em;
+  font-weight: 700;
+  filter: drop-shadow(1px 1px 3px #282828);
+  background-color: rgb(30, 30, 30);
+  border-radius: .1em;
+  padding: 1em;
+}
+
+.unsplash_credits a {
+  color: #fff;
+
+}
